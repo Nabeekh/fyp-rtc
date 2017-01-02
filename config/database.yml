@@ -1,0 +1,15 @@
+development: 
+ adapter: postgresql  
+ encoding: utf8 
+ database: abc 
+ username: postgres  
+ password: hanibal
+ host: localhost
+
+ production:  
+ adapter: postgresql  
+ encoding: utf8  
+ database: abc  
+ username: postgres  
+ password: hanibal 
+ host: localhost

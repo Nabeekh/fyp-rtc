@@ -1,0 +1,23 @@
+<div class=container>
+	<div class = row>
+		<h2>add new article</h2>
+</div>
+	<div class=col-md-3></div>
+	<div class= col-md-5>
+		<%= form_for :article, url: articles_path do |f| %>
+		<div class = form-group>
+			<label><%= f.label :title , class: "control-label" %><br></label>
+			<%= f.text_field :title , class: "form-control" %>
+		</div>
+		<div class = form-group>
+			<%= f.label :Paragraph, class: "control-label" %><br>
+			<%= f.text_area :text, class: "control-label" , :rows => "6"%>
+		</div>
+		<%= f.submit "Save", :class => "btn btn-default" %>
+		<% end %>
+		<h3><%= link_to 'Back', articles_path ,:class => "btn btn-info"%></h3>
+	</div>
+</div>
+<% if params[:error].present? %>
+<strong><%= params[:error] %></strong>
+<% end %>

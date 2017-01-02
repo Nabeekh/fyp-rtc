@@ -1,0 +1,27 @@
+
+// Place all the styles related to the Welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+#welcome_div{
+	height: 162px;
+	border-style: dotted;
+	border-radius: 5px;
+	margin-top: 100px;
+	}
+
+#title_h1{
+	margin-left:70px;
+}
+#welcome{
+	margin-left:140px;
+}
+.members{
+	box-shadow : 5px 5px 5px white inset;
+
+	
+}

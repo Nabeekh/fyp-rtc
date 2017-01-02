@@ -1,0 +1,20 @@
+<div class = container>
+ <h3> <strong>Title:</strong>
+  <%= @article.title %>	</h3> 
+<h4>
+  <strong>Text:</strong>
+  <%= @article.text %>
+</h4>
+<%= render @article.comments %>
+<div class=row col-md-12>
+<div class=col-md-4>
+<%= render 'comments/form' %>
+</div>
+<div class=col-md-4>
+<% if current_user.has_role? [:admin] or current_user.has_role? [:moderator]%>
+<h4 class="pull-right"><%= link_to 'Edit', edit_article_path(@article),:class => "btn btn-info" %></h4>
+<% end %>
+<h4><%= link_to 'Back', articles_path,:class => "btn btn-info" %></h4>
+</div>
+</div>
+</div>
