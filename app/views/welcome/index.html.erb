@@ -5,26 +5,15 @@
 			<h1 id="title_h1">Welcome to my articles</h1>
 			<h2 id="welcome"><%= link_to 'READ All articles', controller: 'articles'%></h2>
 			<div class = row>
-				<% if user_signed_in? %>
-				<%= link_to 'Sign Out' , destroy_user_session_path, 
-				method: :delete ,:class => "btn btn-info" %>
-				<% else %>
-				<%= link_to 'Sign In' , new_user_session_path,:class => "btn btn-info" %>
-				<%= link_to 'Sign UP' , new_user_registration_path,:class => "btn btn-info pull-right"%>
-				<%end%>
+				`
 			</div>	
 		</div>
 	</div>
 	<div class=col-md-3></div>
 	<div class = "col-md-6 members" >
-	<h3>Current memebers</h2>
-	<% @users.each do |u| %>
-	<strong><%= u.email %></strong>
-	<%= u.sign_in_count %>
-	<br>
-	<% end %>
+
+<div ng-app="myApp" ng-init="myCol='lightblue'">
+<input style="background-color:{{myCol}}" ng-model="myCol" value="{{myCol}}">	
 </div>
-<% if user_signed_in? %>
-<p> logged in as : <%= current_user.email %></p>
-<% end %>
+</div>
 

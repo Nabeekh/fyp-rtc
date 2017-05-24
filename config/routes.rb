@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users
-  resources :articles do
-  	resources :comments do
+  resources :articles
+  resources :users do
+  	collection do
+  		post:signIn
   	end
   end
-  resources :replies
 
   root 'welcome#index'
 end

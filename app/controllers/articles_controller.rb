@@ -1,39 +1,38 @@
 class ArticlesController < ApplicationController
 	def index
-		#@article = Article.all
-		@article = Article.paginate(:page => params[:page], :per_page => 2)
+		@articles = Article.all
 	end
 
 	def show
 		@article = Article.find(params[:id])
-
 	end
 	def new
 	end
 	def edit
-		@article = Article.find(params[:id])
+		# @article = Article.find(params[:id])
 	end
 	def create
 		@article = Article.new(articles_params)
-		@article.user_id = current_user.id
 		if @article.save
-			redirect_to @article
+			render json: Article.all, status: 200
 		else
-			redirect_to action: 'new', error: @article.errors.full_messages.first
+			render json: {status: 400}
+
 		end
 	end
 	def update
+		byebug
 		@article = Article.find(params[:id])
 		if @article.update(articles_params)
-			redirect_to @article
+			render json: {status: 200}
 		else
-			redirect_to action: 'edit', error: @article.errors.full_messages
+			render json: {status: 400}
 		end
 	end
 	def destroy
 		@article = Article.find(params[:id])
 		@article.destroy
-		redirect_to articles_path
+		render json: {status: 200}
 	end
 	private
 	def articles_params

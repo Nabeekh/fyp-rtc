@@ -12,4 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require bootstrap/dist/js/bootstrap.min
+// = require angular-ui-router/release/angular-ui-router.min
+//= require angular-modal-service/dst/angular-modal-service.min
+//= require angular/myApp.js
+//= require_tree ./angular
+

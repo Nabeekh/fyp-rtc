@@ -1,17 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html ng-app='myApp'>
   <head>
-    <title>RAILS ARTICLES</title>
-    <%= csrf_meta_tags %>
+    <title>Test App</title>
+    <%#= csrf_meta_tags %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+    <script src=""></script>
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <script type="text/javascript" src = "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
     <%= javascript_include_tag 'application'%>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+ 
+     
   </head>
-
   <body>
-    <%= yield %>
-       <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
+      <div ui-view></div>
 
   </body>
 </html>
