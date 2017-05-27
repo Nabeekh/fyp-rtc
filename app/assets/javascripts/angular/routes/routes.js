@@ -57,7 +57,39 @@ myApp.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function(
 	.state("User", {
 		parent: 'userindex',
 		url: '/user-home',
-		templateUrl: '/assets/angular/templates/user-home.html'
+		templateUrl: '/assets/angular/templates/user-home.html',
+		controller: 'userHomeCtrl'
+
+	})
+	.state("User-package", {
+		parent: 'userindex',
+		url: '/user-package',
+		templateUrl: '/assets/angular/templates/user-pacakage.html',
+		controller: 'userPackageCtrl'
+
+	})
+	.state("User-profile", {
+		parent: 'userindex',
+		url: '/user-profile',
+		templateUrl: '/assets/angular/templates/profile.html',
+		controller: 'userProfileCtrl'
+
+	})
+	.state("User-about", {
+		parent: 'userindex',
+		url: '/about-system',
+		templateUrl: '/assets/angular/templates/about.html'
+	})
+	.state("User-blog", {
+		parent: 'userindex',
+		url: '/blog',
+		templateUrl: '/assets/angular/templates/blog.html',
+		controller: 'blogCtrl',
+		resolve:{
+			articles: function(WelcomeService){
+				return WelcomeService.list();
+			}
+		}
 
 	})
 }]);

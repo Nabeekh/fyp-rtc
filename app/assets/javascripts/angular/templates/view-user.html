@@ -17,6 +17,8 @@
                         <tr>
                             <th>Name</th>
                             <th>Email</th>
+                            <th>city</th>
+                            <th>addressLine</th>
                             <th>LastLogin</th>
                         </tr>
                     </thead>
@@ -24,6 +26,8 @@
                         <tr ng-repeat="user in users">
                           <td >{{user.userName}}</td>
                           <td>{{user.email}}</td>
+                          <td>{{user.city}}</td>
+                          <td>{{user.addressLine}}</td>
                           <td>{{user.lastLogin | date: "HH:mm dd-MM-yyyy"}}</td>
                         </tr>
                     </tbody>

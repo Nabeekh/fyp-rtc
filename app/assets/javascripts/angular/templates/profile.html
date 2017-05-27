@@ -1,0 +1,41 @@
+<section  class="panel panel-default">
+	<div class="panel-heading">
+		<strong>
+			<span class="glyphicon glyphicon-th"></span>Your Profile</strong>
+			<div class="pull-right header-buttons">
+			</div>
+		</div>
+		<div class="panel-body" class="text-center">
+			<form id="register-form" role="form">
+				<div class="form-group">
+					<input type="text" name="username" id="username" tabindex="1" class="form-control"  ng-model = "user.userName" placeholder="Username" value="">
+				</div>
+				<div class="form-group">
+					<input type="email" name="email" id="email" tabindex="1" class="form-control" ng-model="user.email" placeholder="Email Address">
+				</div>
+				<div class="form-group">
+					<input type="password" ng-model="user.password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
+				</div>
+				<div class="form-group">
+					<input type="password" ng-model="user.password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" ng-model="user.addressLine" placeholder="Address Line" value="">
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" ng-model="user.city" placeholder="City" >
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" ng-model="user.mobile" placeholder="Mobile Number" >
+				</div>
+				<div class="form-group">
+					<input  type="text" class="form-control" ng-model="user.region" placeholder="Region" >
+				</div>
+				<div class="form-group">
+					<div class="row">
+					<button class="btn btn-success" ng-click="updateInfo()">Update Info</button>
+					</div>
+				</div>
+			</form>
+		</div>
+</section>

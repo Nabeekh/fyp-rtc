@@ -1,4 +1,4 @@
-function sessionCtrl($scope, ModalService, $state, $http, close) {
+function sessionCtrl($scope, ModalService, $state, $http, close, $cookies, toastr) {
 	$scope.initalizer = function(){
 		$scope.adminuser = "asim";
 		$scope.pass = "12345678";
@@ -14,10 +14,12 @@ function sessionCtrl($scope, ModalService, $state, $http, close) {
 		}else{
 			$http.post('/users/signIn', {user: $scope.data}).then(function(res){
 				if(res.data.email){
+					$cookies.put('user',JSON.stringify( res.data));
+					toastr.info('Login success! Welcome to RTC');
+					close();
 					$state.go('User');
-					close();
 				}else{
-					close();
+					toastr.error('User not found! try again');
 				}
 			});
 		}
@@ -31,11 +33,12 @@ function sessionCtrl($scope, ModalService, $state, $http, close) {
 		$scope.reg = false;
 	};
 	$scope.submitReg = function(){
-		console.log($scope.user);
-		$http.post('/users' , {user: $scope.user});
+		$http.post('/users' , {user: $scope.user}).then(function(res){
+		toastr.success('Register successful! Please login to continue');
+		})
 	};
 	$scope.register = function (){
 	};
 };
 myApp.controller('sessionCtrl', sessionCtrl);
-sessionCtrl.$inject = ['$scope','ModalService', '$state', '$http', 'close'];
+sessionCtrl.$inject = ['$scope','ModalService', '$state', '$http', 'close','$cookies', 'toastr'];

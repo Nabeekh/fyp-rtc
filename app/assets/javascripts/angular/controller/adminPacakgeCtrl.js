@@ -1,5 +1,8 @@
 function AdminPackageCtrl($scope, $state, $http) {
 	$scope.initalizer = function(){
+		$http.get('/packages').then(function(res){
+			$scope.packages = res.data
+		});
 
 	};
 	$scope.initalizer();

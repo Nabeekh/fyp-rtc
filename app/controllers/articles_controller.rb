@@ -21,7 +21,6 @@ class ArticlesController < ApplicationController
 		end
 	end
 	def update
-		byebug
 		@article = Article.find(params[:id])
 		if @article.update(articles_params)
 			render json: {status: 200}
