@@ -15,5 +15,6 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
+/*
  *= require bootstrap/dist/css/bootstrap
+ */
