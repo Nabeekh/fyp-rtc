@@ -1,0 +1,70 @@
+
+<section class="panel panel-default">
+        <div class="panel-heading">
+            <strong>
+            <span class="glyphicon glyphicon-th"></span> Dashboard</strong>
+            <div class="pull-right header-buttons">
+<!--                 <a ng-click="CreateCategory();" class="btn btn-success btn-sm">New Dashboard Category</a> -->
+            </div>
+        </div>
+        <div class="panel-body">
+	<div class="container-fluid tile_margin">
+		<div class="row">
+			<div class="col-md-4 col-sm-4 col-xs-6">
+				<a ng-click="quickUser()">
+					<div class="thumb_box">
+						<div class="content">
+							<h2><strong>Quick User</strong></h2>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-4 col-sm-4 col-xs-6">
+				<a ng-click="quickBlog()">
+					<div class="thumb_box">
+						<div class="content">
+							<h2><strong>Quick Blog</strong></h2>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-4 col-sm-4 col-xs-6">
+				<a ng-click="Findone()">
+					<div class="thumb_box">
+						<div class="content">
+							<h2><strong>Search Package</strong></h2>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-4 col-sm-4 col-xs-6">
+				<a ng-click="reservedPackages()">
+					<div class="thumb_box">
+						<div class="content">
+							<h2><strong>Reserved PAckages</strong></h2>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-4 col-sm-4 col-xs-6">
+				<a ng-click="viewUsers()">
+					<div class="thumb_box">
+						<div class="content">
+							<h2>Users: <strong>{{userCount()}}</strong></h2>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-4 col-sm-4 col-xs-6">
+				<a ng-click="deliverdModal()">
+					<div class="thumb_box">
+						<div class="content">
+							<h2><strong>Deliverd Packages</strong></h2>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+        </div>
+</section>
