@@ -22,6 +22,7 @@ function userPackageCtrl($scope, $state, $http, $cookies, toastr) {
 			$scope.packages.push(respose.data);
 			toastr.info('package Submitted successfully');
 			$scope.showList();
+			$scope.package = {};
 		});
 	};
 	$scope.showNewForm = function(){
