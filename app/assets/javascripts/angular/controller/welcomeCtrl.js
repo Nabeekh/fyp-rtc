@@ -10,6 +10,8 @@ function welcomeCtrl($scope , ModalService, $state) {
     }).then(function(modal) {
       modal.element.modal({});
       modal.close.then(function(result) {
+        $('.modal-backdrop').remove();
+        $('body').removeClass('modal-open');
       });
     });
 

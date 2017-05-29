@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 gem 'devise'
 # use can can gem to 
 # use rolify to define roles
+gem 'rake'	
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 #used to generate ERD of app
@@ -24,7 +25,6 @@ gem 'coffee-rails', '~> 4.2'
 # gem 'therubyracer', platforms: :ruby
 # gem 'meta-tags'
 # bootstrap gem
-gem 'rake'	
 gem 'bootstrap-sass', '~> 3.3.6'
 # Use jquery as the JavaScript library 
 gem 'jquery-rails'
