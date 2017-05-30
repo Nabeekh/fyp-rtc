@@ -3,9 +3,166 @@
 	    		<strong>
 	    			<span class="glyphicon glyphicon-th"></span>Dashboard</strong>
 	    			<div class="pull-right header-buttons">
+	    				<div id="reportrange" class="btn btn-green btn-square date-picker">
+	    					<i class="fa fa-calendar"></i>
+	    					<span class="date-range">{{date | date: "HH:mm dd-MM-yyyy"}}</span> <i class="fa fa-caret-down"></i>
+	    				</div>
 	    			</div>
 	    		</div>
 	    		<div class="panel-body">
-	    		<h2>User Dashboard GUI Comming soon</h2>
+	    			<div class="row" >
+	    				<div class="col-md-5" style="background-color: #16a085;height: 250px">
+	    					<h2 style="color: #fff">Search Package</h2>
+	    					<div id="custom-search-input">
+	    						<div class="input-group col-md-12">
+	    							<input ng-model ="trackId" type="number" class="form-control input-lg" placeholder="Track Id" />
+	    							<span class="input-group-btn">
+	    								<button class="btn btn-info btn-lg" ng-click="searchPackage()" type="button">
+	    									<i class="glyphicon glyphicon-search"></i>
+	    								</button>
+	    							</span>
+	    						</div>
+	    					</div>
+	    				</div>
+	    				<div ng-show="searchfrom" class="col-md-5 pull-right" style="background-color: #16a085; height: 250px">
+	    					<h2 style="color: #fff">pricing</h2>
+	    					<div id="custom-search-input">
+	    						<div class="input-group col-md-12">
+	    							<input type="text" ng-model="data.from" class="form-control" placeholder="From City">	
+	    							<input type="text" ng-model="data.to" class="form-control"  placeholder="To city">
+	    							<input type="number" ng-model="data.weight" class="form-control"  placeholder="Weight">
+	    						</div>
+	    					</div>
+	    					<br>
+	    					<button ng-click="priceCalculate()" class="btn btn-primary pull-right">Calculate</button>	
+	    				</div>
+	    				<div ng-show="costform" class="col-md-5 pull-right" style="background-color: #16a085; height: 250px">
+	    					<h2 style="color: #fff">Cost</h2>
+	    					<div id="custom-search-input">
+	    						<div class="input-group col-md-12">
+	    							<h2 class="text-center">{{fare}} PKR</h2>
+	    						</div>
+
+	    					</div>
+	    					<br>
+	    					<button ng-click="showSearchFrom()" class="btn btn-primary pull-right">OK</button>	
+	    				</div>
+	    			</div>
+	    			<br>
+	    			<div class="row" >
+	    				<div class="col-lg-2 col-sm-6">
+	    					<div class="circle-tile">
+	    						<a href="#/user-profile">
+	    							<div class="circle-tile-heading dark-blue">
+	    								<i class="fa fa-users fa-fw fa-3x"></i>
+	    							</div>
+	    						</a>
+	    						<div class="circle-tile-content dark-blue">
+	    							<div class="circle-tile-description text-faded">
+	    								Profile
+	    							</div>
+	    							<div class="circle-tile-number text-faded">
+	    								{{user.userName}}
+	    								<span id="sparklineA"></span>
+	    							</div>
+	    							<a href="#/user-profile" class="circle-tile-footer">More Info <i class="fa fa-chevron-circle-right"></i></a>
+	    						</div>
+	    					</div>
+	    				</div>
+	    				<div class="col-lg-2 col-sm-6">
+	    					<div class="circle-tile">
+	    						<a href="#/user-home">
+	    							<div class="circle-tile-heading green">
+	    								<i class="fa fa-money fa-fw fa-3x"></i>
+	    							</div>
+	    						</a>
+	    						<div class="circle-tile-content green">
+	    							<div class="circle-tile-description text-faded">
+	    								Cost Spent
+	    							</div>
+	    							<div class="circle-tile-number text-faded">
+	    								{{spentCount}} PKR
+	    							</div>
+	    							<a href="#/user-home" class="circle-tile-footer">More Info <i class="fa fa-chevron-circle-right"></i></a>
+	    						</div>
+	    					</div>
+	    				</div>
+	    				<div class="col-lg-2 col-sm-6">
+	    					<div class="circle-tile">
+	    						<a href="#/user-package">
+	    							<div class="circle-tile-heading orange">
+	    								<i class="fa fa-gift fa-fw fa-3x"></i>
+
+	    							</div>
+	    						</a>
+	    						<div class="circle-tile-content orange">
+	    							<div class="circle-tile-description text-faded">
+	    								Total Packages
+	    							</div>
+	    							<div class="circle-tile-number text-faded">
+	    								{{allpackagecount}}
+	    							</div>
+	    							<a href="#/user-package" class="circle-tile-footer">More Info <i class="fa fa-chevron-circle-right"></i></a>
+	    						</div>
+	    					</div>
+	    				</div>
+	    				<div class="col-lg-2 col-sm-6">
+	    					<div class="circle-tile">
+	    						<a href="#/user-package">
+	    							<div class="circle-tile-heading blue">
+	    								<i class="fa fa-gift fa-fw fa-3x"></i>
+	    							</div>
+	    						</a>
+	    						<div class="circle-tile-content blue">
+	    							<div class="circle-tile-description text-faded">
+	    								Booked Packages
+	    							</div>
+	    							<div class="circle-tile-number text-faded">
+	    								{{bookedCount}}
+	    								<span id="sparklineB"></span>
+	    							</div>
+	    							<a href="#/user-package" class="circle-tile-footer">More Info <i class="fa fa-chevron-circle-right"></i></a>
+	    						</div>
+	    					</div>
+	    				</div>
+	    				<div class="col-lg-2 col-sm-6">
+	    					<div class="circle-tile">
+	    						<a href="#/user-package">
+	    							<div class="circle-tile-heading red">
+	    								<i class="fa fa-truck fa-fw fa-3x"></i>
+	    							</div>
+	    						</a>
+	    						<div class="circle-tile-content red">
+	    							<div class="circle-tile-description text-faded">
+	    								Delivered
+	    							</div>
+	    							<div class="circle-tile-number text-faded">
+	    								{{deliveredcount}}
+	    								<span id="sparklineC"></span>
+	    							</div>
+	    							<a href="#/user-package" class="circle-tile-footer">More Info <i class="fa fa-chevron-circle-right"></i></a>
+	    						</div>
+	    					</div>
+	    				</div>
+	    				<div class="col-lg-2 col-sm-6">
+	    					<div class="circle-tile">
+	    						<a href="#/user-package">
+	    							<div class="circle-tile-heading purple">
+	    								<i class="fa fa-bell fa-fw fa-3x"></i>
+	    							</div>
+	    						</a>
+	    						<div class="circle-tile-content purple">
+	    							<div class="circle-tile-description text-faded">
+	    								Latest Package status
+	    							</div>
+	    							<div class="circle-tile-number text-faded">
+	    								{{recent.status}}
+	    								<span id="sparklineD"></span>
+	    							</div>
+	    							<a href="#/user-package" class="circle-tile-footer">More Info <i class="fa fa-chevron-circle-right"></i></a>
+	    						</div>
+	    					</div>
+	    				</div>
+	    			</div>
 	    		</div>
 	    	</section>

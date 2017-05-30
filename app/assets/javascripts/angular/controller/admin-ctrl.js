@@ -2,13 +2,11 @@ function AdminCtrl($scope, $state, $http, ModalService, $cookies) {
 	$scope.initalizer = function(){
 	$http.get('/users.json').then(function(res){
 			$scope.users = res.data.users
-			console.log($scope.users);
 		
 	});
   $http.get('/packages').then(function(res){
     $scope.packages = res.data
-    console.log($scope.packages);
-  })
+  });
 
 	};
 	$scope.initalizer();

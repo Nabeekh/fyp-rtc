@@ -1,0 +1,27 @@
+<div class="modal">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content"">
+      <div id="modal-header" class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h4 id="modal-title" class="modal-title">Package Found</h4>
+      </div>
+      <div class="col-md-12 modal-body">
+    <section class="panel panel-warning">
+        <div class="panel-body">
+          <p >Status: <strong>{{package.status}}</strong></p><hr>
+          <p>Sender: {{package.sender}}</p><hr>
+          <p>Receiver: {{package.receiver}}</p><hr>
+          <p>Tracking no:  {{package.trackId}}</p><hr>
+          <p>weight:  {{package.weight}}</p><hr>
+          <p>Addressline:  {{package.address}}</p><hr>
+          <p>Cost:{{package.price}}</p>
+        </div>
+    </section>
+    </div>
+      <div class="modal-footer">
+         <button class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+  </div>
+</div>
