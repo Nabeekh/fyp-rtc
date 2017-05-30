@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app='myApp'>
   <head>
-    <title>Welcome to RTC</title>
+    <title>Welcome to RCTS</title>
     <%#= csrf_meta_tags %>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
@@ -13,11 +13,8 @@
     <script src="https://unpkg.com/angular-toastr/dist/angular-toastr.tpls.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/angular-toastr/dist/angular-toastr.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-    
     <%= javascript_include_tag 'application'%>
     <%= stylesheet_link_tag    'application', media: 'all' %>
- 
-     
   </head>
   <body>
       <div ui-view></div>
