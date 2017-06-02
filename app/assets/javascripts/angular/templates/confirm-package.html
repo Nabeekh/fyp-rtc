@@ -1,0 +1,48 @@
+<div class="modal">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content"">
+      <div id="modal-header" class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h4 id="modal-title" class="modal-title">Confirmation</h4>
+      </div>
+      <div class="col-md-12 modal-body">
+    <section class="panel panel-primary">
+        <div class="panel-body">
+          <p>Sender: {{package.sender}}</p>
+          <p>Receiver: {{package.receiver}}</p>
+          <p>weight:  {{package.weight}}</p>
+          <p>Addressline:  {{package.address}}</p>
+          <p>Cost:{{package.price}}</p>
+          <div class="row col-md-12 col-sm-7" class="text-center">
+          <strong>Select Payment Method</strong>
+          <div class="form-group">
+          <label >Now</label>
+            <input type="radio" ng-model="radio" value="now">
+            <label>At station</label>
+            <input type="radio" ng-model="radio" value="later">
+          </div>
+          <div class="col-md-12 form-group" ng-show="radio == 'now'">
+              <label>Select option</label>
+              <select
+              class="form-control col-md-6"
+              ng-options="method.name as method.name  for method in paymentMethods"
+                ng-model="method.name">
+              </select>
+               <u>NOTE: This feature will be realised after permissions. Please select Another payment method</u>
+          </div>
+           <div class="col-md-12" ng-show="radio == 'later'">
+           <p>Your Total: <strong>{{package.price}} PKR</strong></p>
+            PAY AT STATION. PLEASE CONFIRM TO CONTINUE!
+          </div>
+          </div>
+        </div>
+    </section>
+    </div>
+      <div class="modal-footer">
+         <button class="btn btn-primary" ng-click="cancel()">Close</button>
+         <button class="btn btn-success" ng-click="confirm()">Confrim</button>
+      </div>
+  </div>
+</div>

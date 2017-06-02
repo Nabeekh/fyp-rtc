@@ -85,7 +85,8 @@
               <select
               class="form-control col-md-6"
               ng-options="status.name as status.name  for status in statuses"
-                ng-model="package.newStatus">
+                ng-model="package.newStatus"
+                ng-change="Addreport()">
               </select>
               </div>
               <div class="form-group">
@@ -97,13 +98,35 @@
           </div>
         </div>
       </section>
-
+      <section ng-show='outcome' class="panel panel-primary">
+        <div class="panel-body">
+          <p> Current Status: <strong>{{package.newStatus}}</strong></p><hr>
+          <p>Sender: {{package.sender}}</p><hr>
+          <p>Tracking no:  {{package.trackId}}</p><hr>
+          <p>weight:  {{package.weight}}</p><hr>
+          <p>Addressline:  {{package.address}}</p><hr>
+          <p>Cost:{{package.price}}</p>
+        </div>
+        <strong>Please fill package outcome report</strong>
+        <div  ng-show="delivery" class="form-group">
+        <input  type="text" class="form-control" ng-model="report.received_by" placeholder="Package received by" >
+        </div>
+        <div ng-show="delivery"  class="form-group">
+          <input type="text" class="form-control" ng-model="report.receiver_cinc" placeholder="reciver CNIC" >
+        </div>
+        <div ng-show="noAproval"  class="form-group">
+        <label>Why you are not Approving</label>
+        <textarea type="text" rows="6" class="form-control" ng-model="report.description" placeholder="Details Why Not approved!"></textarea>
+        </div>
+      </section>
 </div>
       </div>
       <div class="modal-footer">
         <button ng-show="shownew" class="btn btn-success pull-right" ng-click="updatePackage()"> Submit</button>
         <button ng-show="shownew" ng-click="showListPage() " class="btn btn-primary pull-right"> Cancel</button>
-         <button ng-hide="shownew" class="btn btn-primary" data-dismiss="modal">Close</button>
+         <button ng-show="showlist" class="btn btn-primary" data-dismiss="modal">Close</button>
+         <button ng-show="outcome" class="btn btn-primary" data-dismiss="modal">cancel</button>
+         <button ng-show="outcome" class="btn btn-success" ng-click="submitreport()">Submitreport</button>
       </div>
     </div>
 

@@ -6,7 +6,7 @@ class PackagesController < ApplicationController
 		render json:@packages
 	else
 		@packages = Package.all
-		render json:@packages
+		render json: @packages
 	end
 
 	end

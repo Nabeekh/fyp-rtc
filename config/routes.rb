@@ -4,9 +4,12 @@ Rails.application.routes.draw do
   	collection do
   		post:signIn
   	end
-  	 resources :packages
+  	 resources :packages do
+      resources :outcomes
+     end
   end
   resources :packages do
+    resources :outcomes
   	collection do
   		post:search
   	end

@@ -17,6 +17,7 @@
 					<th>addressline</th>
 					<th>cost</th>
 					<th>Update at</th>
+					<th>actions</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -29,6 +30,12 @@
 					<td>{{package.address}}</td>
 					<td>{{package.price}} pkr</td>
 					<td>{{package.updated_at | date: "dd-MM-yyyy"}}</td>
+					<th><button ng-if="package.status == 'not Approved'" class="btn btn-sm btn-danger" ng-click="showOutcome(package)">
+            <span class="glyphicon glyphicon-eye-close"></span>
+          </button>
+          <button ng-if="package.status == 'Deliverd'" class="btn btn-sm btn-success" ng-click="showOutcome(package)">
+            <span class="glyphicon glyphicon-eye-close"></span>
+          </button></th>
 				</tr>
 
 			</tbody>

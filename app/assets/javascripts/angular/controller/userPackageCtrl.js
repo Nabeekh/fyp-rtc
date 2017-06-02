@@ -1,4 +1,4 @@
-function userPackageCtrl($scope, $state, $http, $cookies, toastr) {
+function userPackageCtrl($scope, $state, $http, $cookies, toastr , ModalService) {
 	$scope.initalizer = function(){
 		$scope.list = true;
 		$scope.shownew =false;
@@ -20,10 +20,49 @@ function userPackageCtrl($scope, $state, $http, $cookies, toastr) {
 		$scope.package.trackId = Math.floor((Math.random()*92)+1);
 		$http.post('/users/'+$scope.user.id+'/packages' , {package: $scope.package}).then(function(respose){
 			$scope.packages.push(respose.data);
-			toastr.info('package Submitted successfully');
+			toastr.info('package Booked successfully');
 			$scope.showList();
 			$scope.package = {};
 		});
+	};
+	$scope.Confirmation = function() {
+		$scope.package.price = $scope.priceCalculate();
+		ModalService.showModal({
+			templateUrl: "/assets/angular/templates/confirm-package.html",
+			controller: "ConfirmCtrl",
+			inputs:{
+				package: $scope.package
+			}
+		}).then(function(modal) {
+			modal.element.modal({});
+			modal.close.then(function(result) {
+				if(result == 'y'){
+					$scope.submitPackage();
+				}else{
+					toastr.error('YOu have canceld Package submission');
+					$state.go('User-package');
+				}
+				$('.modal-backdrop').remove();
+				$('body').removeClass('modal-open');
+			});
+		});
+
+	};
+	$scope.showOutcome = function(pack) {
+		ModalService.showModal({
+			templateUrl: "/assets/angular/templates/admin-outcome.html",
+			controller: "viewOutcomeCtrl",
+			inputs: {
+				package: pack
+			}
+		}).then(function(modal) {
+			modal.element.modal({});
+			modal.close.then(function(result) {
+				$('.modal-backdrop').remove();
+				$('body').removeClass('modal-open');
+			});
+		});
+
 	};
 	$scope.showNewForm = function(){
 		$scope.shownew = true;
@@ -47,4 +86,4 @@ function userPackageCtrl($scope, $state, $http, $cookies, toastr) {
 	};
 };
 myApp.controller('userPackageCtrl', userPackageCtrl);
-userPackageCtrl.$inject = ['$scope', '$state', '$http', '$cookies', 'toastr'];
+userPackageCtrl.$inject = ['$scope', '$state', '$http', '$cookies', 'toastr', 'ModalService'];

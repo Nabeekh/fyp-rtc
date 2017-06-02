@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170525092758) do
+ActiveRecord::Schema.define(version: 20170601063416) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,17 @@ ActiveRecord::Schema.define(version: 20170525092758) do
     t.text     "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "outcomes", force: :cascade do |t|
+    t.text     "description"
+    t.string   "received_by"
+    t.string   "receiver_cinc"
+    t.boolean  "status"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "package_id"
+    t.index ["package_id"], name: "index_outcomes_on_package_id", using: :btree
   end
 
   create_table "packages", force: :cascade do |t|
@@ -62,5 +73,6 @@ ActiveRecord::Schema.define(version: 20170525092758) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "outcomes", "packages"
   add_foreign_key "packages", "users"
 end

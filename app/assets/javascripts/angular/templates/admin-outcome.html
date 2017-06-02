@@ -1,0 +1,37 @@
+<div class="modal" >
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div id="modal-header" class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h4 id="modal-title" class="modal-title">Package Outcome</h4>
+      </div>
+      <div class="col-md-12 modal-body">
+    <div >
+      <section class="panel panel-primary">
+        <div class="panel-heading">
+          <strong>
+            <span class="glyphicon glyphicon-th"></span> Report </strong>
+          </div>
+          <div class="panel-body">
+            <p>Status: <strong>{{package.status}}</strong></p><hr>
+            <p>Sender: {{package.sender}}</p>
+            <p>Cost:{{package.price}}</p><hr>
+            <p>Booked on: {{package.created_at | date: "dd-MM-yyyy"}}</p>
+            <p ng-if="package.status == 'not Approved'">Not Approved On: {{report.created_at | date: "dd-MM-yyyy"}}</p><hr>
+            <p ng-if="package.status == 'Deliverd'">Deliverd on: {{report.created_at | date: "dd-MM-yyyy"}}</p><hr>
+            <p ng-if="package.status == 'not Approved'">Reason: {{report.description}}</p>
+            <p ng-if="package.status == 'Deliverd'">Actual Recived By: {{report.received_by}}</p>
+            <p ng-if="package.status == 'Deliverd'">receiver cinc: {{report.receiver_cinc}}</p>
+          </div>
+        </section>  
+</div>
+      </div>
+      <div class="modal-footer">
+         <button ng-hide="shownew" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
