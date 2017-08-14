@@ -15,8 +15,6 @@ function userPackageCtrl($scope, $state, $http, $cookies, toastr , ModalService)
 	$scope.initalizer();
 
 	$scope.submitPackage = function(){
-
-			console.log('comes here')
 			$scope.package.price = $scope.priceCalculate();
 			$scope.package.status = 'Booked';
 			$scope.package.trackId = Math.floor((Math.random()*92)+1);
@@ -30,7 +28,7 @@ function userPackageCtrl($scope, $state, $http, $cookies, toastr , ModalService)
 
 	};
 	$scope.Confirmation = function() {
-		if($scope.validForm == true){
+		if($scope.validForm() == true){
 			$scope.package.price = $scope.priceCalculate();
 			ModalService.showModal({
 				templateUrl: "/assets/angular/templates/confirm-package.html",
@@ -95,6 +93,7 @@ function userPackageCtrl($scope, $state, $http, $cookies, toastr , ModalService)
 
 	$scope.validForm = function(){
 		if($scope.package.sender == undefined || $scope.package.city == undefined || $scope.package.weight == undefined || $scope.package.receiver == undefined || $scope.package.address == undefined){
+			console.log($scope.package, 'hihhhiih')
 			return false;
 		}else{
 			return true;	
