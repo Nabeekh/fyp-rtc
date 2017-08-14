@@ -9,43 +9,51 @@ function userPackageCtrl($scope, $state, $http, $cookies, toastr , ModalService)
 			$scope.packages = respose.data;
 			}
 		});
-		$scope.pacakge = {};
+		$scope.package = {};
 
 	};
 	$scope.initalizer();
 
 	$scope.submitPackage = function(){
-		$scope.package.price = $scope.priceCalculate();
-		$scope.package.status = 'Booked';
-		$scope.package.trackId = Math.floor((Math.random()*92)+1);
-		$http.post('/users/'+$scope.user.id+'/packages' , {package: $scope.package}).then(function(respose){
-			$scope.packages.push(respose.data);
-			toastr.info('package Booked successfully');
-			$scope.showList();
-			$scope.package = {};
-		});
+
+			console.log('comes here')
+			$scope.package.price = $scope.priceCalculate();
+			$scope.package.status = 'Booked';
+			$scope.package.trackId = Math.floor((Math.random()*92)+1);
+			$http.post('/users/'+$scope.user.id+'/packages' , {package: $scope.package}).then(function(respose){
+				$scope.packages.push(respose.data);
+				toastr.info('package Booked successfully');
+				$scope.showList();
+				$scope.package = {};
+			});
+		
+
 	};
 	$scope.Confirmation = function() {
-		$scope.package.price = $scope.priceCalculate();
-		ModalService.showModal({
-			templateUrl: "/assets/angular/templates/confirm-package.html",
-			controller: "ConfirmCtrl",
-			inputs:{
-				package: $scope.package
-			}
-		}).then(function(modal) {
-			modal.element.modal({});
-			modal.close.then(function(result) {
-				if(result == 'y'){
-					$scope.submitPackage();
-				}else{
-					toastr.error('YOu have canceld Package submission');
-					$state.go('User-package');
+		if($scope.validForm == true){
+			$scope.package.price = $scope.priceCalculate();
+			ModalService.showModal({
+				templateUrl: "/assets/angular/templates/confirm-package.html",
+				controller: "ConfirmCtrl",
+				inputs:{
+					package: $scope.package
 				}
-				$('.modal-backdrop').remove();
-				$('body').removeClass('modal-open');
+			}).then(function(modal) {
+				modal.element.modal({});
+				modal.close.then(function(result) {
+					if(result == 'y'){
+						$scope.submitPackage();
+					}else{
+						toastr.error('You have canceld Package submission');
+						$state.go('User-package');
+					}
+					$('.modal-backdrop').remove();
+					$('body').removeClass('modal-open');
+				});
 			});
-		});
+		}else{
+			toastr.error("Please fill form corectly!");
+		}
 
 	};
 	$scope.showOutcome = function(pack) {
@@ -83,6 +91,14 @@ function userPackageCtrl($scope, $state, $http, $cookies, toastr , ModalService)
 				$scope.fare = 100 + $scope.package.weight*70;
 		}
 		return $scope.fare;
+	};
+
+	$scope.validForm = function(){
+		if($scope.package.sender == undefined || $scope.package.city == undefined || $scope.package.weight == undefined || $scope.package.receiver == undefined || $scope.package.address == undefined){
+			return false;
+		}else{
+			return true;	
+		}
 	};
 };
 myApp.controller('userPackageCtrl', userPackageCtrl);

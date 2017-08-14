@@ -12,16 +12,21 @@ function sessionCtrl($scope, ModalService, $state, $http, close, $cookies, toast
 			$state.go('admin');
 			close();
 		}else{
-			$http.post('/users/signIn', {user: $scope.data}).then(function(res){
-				if(res.data.email){
-					$cookies.put('user',JSON.stringify( res.data));
-					toastr.info('Login success! Welcome to RTC');
-					close();
-					$state.go('User');
-				}else{
-					toastr.error('User not found! try again');
-				}
-			});
+			if($scope.data.email == '' && $scope.data.password == ''){
+				toastr.error('Please provide Email and password!');
+			}else{
+				$http.post('/users/signIn', {user: $scope.data}).then(function(res){
+					if(res.data.email){
+						$cookies.put('user',JSON.stringify( res.data));
+						toastr.info('Login success! Welcome to RTC');
+						close();
+						$state.go('User');
+					}else{
+						toastr.error('User not found! try again');
+					}
+				});
+			}
+
 		}
 	}
 	$scope.signup = function (){
