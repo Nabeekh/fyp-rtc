@@ -93,7 +93,6 @@ function userPackageCtrl($scope, $state, $http, $cookies, toastr , ModalService)
 
 	$scope.validForm = function(){
 		if($scope.package.sender == undefined || $scope.package.city == undefined || $scope.package.weight == undefined || $scope.package.receiver == undefined || $scope.package.address == undefined){
-			console.log($scope.package, 'hihhhiih')
 			return false;
 		}else{
 			return true;	
