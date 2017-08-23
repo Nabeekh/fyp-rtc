@@ -68,6 +68,16 @@ myApp.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function(
 		controller: 'userPackageCtrl'
 
 	})
+	.state("User-trains", {
+		parent: 'userindex',
+		url: '/trains-schedule',
+		templateUrl: '/assets/angular/templates/trains.html'
+	})
+	.state("Admin-trains", {
+		parent: 'index',
+		url: '/trains-schedule/admin',
+		templateUrl: '/assets/angular/templates/trains.html'
+	})
 	.state("User-profile", {
 		parent: 'userindex',
 		url: '/user-profile',

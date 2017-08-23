@@ -3,6 +3,10 @@ function ConfirmCtrl($scope, $state, close , package, toastr) {
 		$scope.package = package;
 		$scope.radio = '';
 		$scope.paymeth = false;
+		$scope.times = ["2 days", "1 day", "3 days"];
+		$scope.trains = ["badar express", "zawar express", "quetta Mall", "Badar Express"];
+		$scope.randTrain = $scope.trains[Math.floor(Math.random() * $scope.trains.length)];
+		$scope.randTime = $scope.times[Math.floor(Math.random() * $scope.times.length)];
 
 		$scope.paymentMethods=[
 		{name: 'Jazz cash'},

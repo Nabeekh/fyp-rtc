@@ -10,6 +10,7 @@ function userPackageCtrl($scope, $state, $http, $cookies, toastr , ModalService)
 			}
 		});
 		$scope.package = {};
+		$scope.package.station = "555";
 
 	};
 	$scope.initalizer();
